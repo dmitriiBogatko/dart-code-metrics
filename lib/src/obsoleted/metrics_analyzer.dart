@@ -72,6 +72,7 @@ class MetricsAnalyzer {
     );
 
     final filePaths = folders
+        .where((directory) => Directory(directory).existsSync())
         .expand((directory) => Glob('$directory/**.dart')
             .listFileSystemSync(
               const LocalFileSystem(),
